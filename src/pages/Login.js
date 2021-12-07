@@ -1,10 +1,10 @@
 import React from 'react';
 import { useCallback } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import CreateUserForm from '../components/CreateUserForm';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import LoginForm from '../components/LoginForm';
 
-function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
-	const signUpUser = useCallback(
+function Login({ setErrors, setLoggedIn, setUserInformation }) {
+	const loginUser = useCallback(
 		(e) => {
 			e.preventDefault();
 
@@ -14,7 +14,7 @@ function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
 			console.log({ email, password });
 
 			const auth = getAuth();
-			createUserWithEmailAndPassword(auth, email, password)
+			signInWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user;
@@ -36,13 +36,12 @@ function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
 		},
 		[setErrors, setLoggedIn, setUserInformation]
 	);
-
 	return (
 		<div className="PageWrapper">
-			<h1>Create User</h1>
-			<CreateUserForm signUpUser={signUpUser} />
+			<h1>Login</h1>
+			<LoginForm loginUser={loginUser} />
 		</div>
 	);
 }
 
-export default CreateUser;
+export default Login;

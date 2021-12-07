@@ -1,25 +1,110 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate,
+} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+
+//Page Imports
+import Header from './components/Header';
+import Login from './pages/Login';
+import UserProfile from './pages/UserProfile';
+import CreateUser from './pages/SignUp';
+import firebaseConfig from './components/FirebaseConfig';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [loggedIn, setLoggedIn] = useState(false);
+	const [loading, setLoading] = useState(true);
+	const [userInformation, setUserInformation] = useState({});
+	const [errors, setErrors] = useState();
+
+	useEffect(() => {
+		// Initialize Firebase
+		initializeApp(firebaseConfig);
+		const auth = getAuth();
+
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				// Logged In
+				setUserInformation(user);
+				setLoggedIn(true);
+			} else {
+				setUserInformation({});
+				setLoggedIn(false);
+			}
+			setLoading(false);
+		});
+	}, []);
+
+	function logout() {
+		const auth = getAuth();
+		signOut(auth)
+			.then(() => {
+				setUserInformation({});
+				setLoggedIn(false);
+				setErrors();
+			})
+			.catch((error) => {
+				console.warn(error);
+				setErrors(error);
+			});
+	}
+
+	if (loading) return null;
+
+	return (
+		<>
+			{/* <> is <React.Fragment> */}
+			<Header logout={logout} loggedIn={loggedIn} />
+			{errors && <p className="Error PageWrapper">{errors}</p>}
+			<Router>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							!loggedIn ? (
+								<Login
+									setLoggedIn={setLoggedIn}
+									setUserInformation={setUserInformation}
+									setErrors={setErrors}
+								/>
+							) : (
+								<Navigate to={`/user/${userInformation.uid}`} />
+							)
+						}
+					/>
+					<Route
+						path="/user:id"
+						element={
+							loggedIn ? (
+								<UserProfile userInformation={userInformation} />
+							) : (
+								<Navigate to="/" />
+							)
+						}
+					/>
+					<Route
+						path="/create"
+						element={
+							!loggedIn ? (
+								<CreateUser
+									setLoggedIn={setLoggedIn}
+									setUserInformation={setUserInformation}
+									setErrors={setErrors}
+								/>
+							) : (
+								<Navigate to={`/user/${userInformation.uid}`} />
+							)
+						}
+					/>
+				</Routes>
+			</Router>
+		</>
+	);
 }
 
 export default App;
