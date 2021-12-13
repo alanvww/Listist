@@ -3,16 +3,25 @@ import React from 'react';
 function CreateUserForm({ signUpUser }) {
 	return (
 		<div className="Form">
-			<h2>Create User Form</h2>
-			<form onSubmit={(e) => signUpUser(e)}>
-				<label htmlFor="email">Email</label>
-				<input type="email" name="email" placeholder="Enter Email" />
+			<div className="user-info-container">
+				<div className="bg-img"></div>
+				<div className="user-info-content">
+					<h1>Hi, new friend.</h1>
+					<form onSubmit={(e) => signUpUser(e)}>
+						<div>
+							<input type="displayName" name="displayName" placeholder="Name" />
 
-				<label htmlFor="password">Password</label>
-				<input type="password" name="password" placeholder="****" />
+							<input type="email" name="email" placeholder="Email" />
 
-				<button type="submit">Create User</button>
-			</form>
+							<input type="password" name="password" placeholder="Password" />
+						</div>
+						<button type="submit">Create Account</button>
+					</form>
+					<p>
+						Already have an account? <a href="/login">Log in here</a>
+					</p>
+				</div>
+			</div>
 		</div>
 	);
 }

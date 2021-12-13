@@ -9,11 +9,17 @@ import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
-//Page Imports
+// Components Imports
 import Header from './components/Header';
+
+// Pages Imports
+import AddPost from './pages/AddPost';
+import CreateUser from './pages/CreateUser';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Post from './pages/Post';
 import UserProfile from './pages/UserProfile';
-import CreateUser from './pages/SignUp';
+
 import firebaseConfig from './components/FirebaseConfig';
 
 function App() {
@@ -64,7 +70,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route
-						path="/"
+						path="/login"
 						element={
 							!loggedIn ? (
 								<Login
@@ -78,17 +84,17 @@ function App() {
 						}
 					/>
 					<Route
-						path="/user:id"
+						path="/user/:id"
 						element={
 							loggedIn ? (
 								<UserProfile userInformation={userInformation} />
 							) : (
-								<Navigate to="/" />
+								<Navigate to="/login" />
 							)
 						}
 					/>
 					<Route
-						path="/create"
+						path="/signup"
 						element={
 							!loggedIn ? (
 								<CreateUser
@@ -100,6 +106,19 @@ function App() {
 								<Navigate to={`/user/${userInformation.uid}`} />
 							)
 						}
+					/>
+
+					<Route
+						path="/"
+						element={loggedIn ? <Dashboard /> : <Navigate to="/login" />}
+					/>
+					<Route
+						path="/add-post"
+						element={loggedIn ? <AddPost /> : <Navigate to="/login" />}
+					/>
+					<Route
+						path="/lists/:id"
+						element={loggedIn ? <Post /> : <Navigate to="/login" />}
 					/>
 				</Routes>
 			</Router>

@@ -11,13 +11,12 @@ function Login({ setErrors, setLoggedIn, setUserInformation }) {
 			const email = e.currentTarget.email.value;
 			const password = e.currentTarget.password.value;
 
-			console.log({ email, password });
-
 			const auth = getAuth();
 			signInWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user;
+					console.log(user);
 					setLoggedIn(true);
 					setUserInformation({
 						email: user.email,
@@ -37,8 +36,7 @@ function Login({ setErrors, setLoggedIn, setUserInformation }) {
 		[setErrors, setLoggedIn, setUserInformation]
 	);
 	return (
-		<div className="PageWrapper">
-			<h1>Login</h1>
+		<div className="PageWrapper centered">
 			<LoginForm loginUser={loginUser} />
 		</div>
 	);

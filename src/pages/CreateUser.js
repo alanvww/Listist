@@ -10,14 +10,14 @@ function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
 
 			const email = e.currentTarget.email.value;
 			const password = e.currentTarget.password.value;
-
-			console.log({ email, password });
+			const displayName = e.currentTarget.displayName.value;
 
 			const auth = getAuth();
-			createUserWithEmailAndPassword(auth, email, password)
+			createUserWithEmailAndPassword(auth, email, password, displayName)
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user;
+					console.log(user);
 					setLoggedIn(true);
 					setUserInformation({
 						email: user.email,
@@ -38,8 +38,7 @@ function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
 	);
 
 	return (
-		<div className="PageWrapper">
-			<h1>Create User</h1>
+		<div className="PageWrapper centered">
 			<CreateUserForm signUpUser={signUpUser} />
 		</div>
 	);
