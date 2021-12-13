@@ -1,9 +1,10 @@
 import React from 'react';
 
 function ListCard({ list }) {
+	const TITLE = list.strContent.split('\\n\\n')[0];
 	return (
 		<div className="ListCard BGBlur">
-			<div className="listTile">{list.strContent.split('\n\n')[0]}</div>
+			<div className="listTile">{TITLE}</div>
 			<p className="ListInfo">
 				By <a href={`/user/${list.userID}`}>{list.userName}</a>
 			</p>

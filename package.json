@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.8.3",
     "@tiptap/react": "^2.0.0-beta.98",
     "@tiptap/starter-kit": "^2.0.0-beta.156",
+    "axios": "^0.24.0",
     "firebase": "^9.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
