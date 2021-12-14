@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ListCard from '../components/ListCard';
 
-const url = process.env.REACT_APP_BACKEND_URL || `http://localhost:4000`;
+const url = process.env.REACT_APP_BACKEND_URL;
 
 function UserProfile({ userInformation }) {
 	let { id } = useParams();

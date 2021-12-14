@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const url = process.env.REACT_APP_BACKEND_URL || `http://localhost:4000`;
+const url = process.env.REACT_APP_BACKEND_URL;
 
 function Post() {
 	const [listObj, setList] = useState({});

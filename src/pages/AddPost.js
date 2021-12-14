@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Tiptap from '../components/Editor.jsx';
 
-const baseUrl = process.env.REACT_APP_BACKEND_URL || `http://localhost:4000`;
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
 
 function AddPost({ userInformation }) {
 	let navigate = useNavigate();
