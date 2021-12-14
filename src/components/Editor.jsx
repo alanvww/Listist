@@ -15,6 +15,7 @@ const Tiptap = ({ setContent }) => {
 		  </ol>
 		`,
 	});
+
 	const MenuBar = ({ editor }) => {
 		if (!editor) {
 			return null;

@@ -1,6 +1,6 @@
 * {
-	font-family: 'Shippori Antique B1', sans-serif;
 	color: #fff;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 @keyframes gradient {
@@ -36,17 +36,17 @@ body {
 }
 
 .PageWrapper {
-	padding: 10px 25px;
 	margin: 0 auto;
 	max-width: 1200px;
+	padding: 10px 25px;
 }
 
 .BGBlur {
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(5px);
 	border-radius: 20px;
 	color: black;
 	padding: 20px;
-	background-color: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(5px);
 }
 
 .Error {
@@ -56,16 +56,16 @@ body {
 
 .Header {
 	align-items: center;
+	background: #121212;
 	display: flex;
 	justify-content: space-between;
 	padding: 20px 25px;
-	background: #121212;
 }
 
 .Header .Logo {
+	color: #fff;
 	font-size: 25px;
 	font-weight: bold;
-	color: #fff;
 }
 
 .Header nav {
@@ -92,59 +92,59 @@ button {
 
 /* Login/Create User Box */
 .user-info-container {
-	position: relative;
-	width: 295px;
-	height: 500px;
 	background-color: #121212;
 	border-radius: 20px;
 	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+	height: 500px;
 	overflow: hidden;
+	position: relative;
+	width: 295px;
 }
 
 .bg-img {
+	background: url(./assets/user-info-bg.png) center/ cover;
+	height: 300px;
 	position: absolute;
 	top: -60px;
 	width: 100%;
-	height: 300px;
-	background: url(./assets/user-info-bg.png) center/ cover;
 }
 
 .user-info-container::before {
+	background: linear-gradient(to top, #121212 65%, transparent);
 	content: '';
+	height: 100%;
 	position: absolute;
 	width: 100%;
-	height: 100%;
 	z-index: 1;
-	background: linear-gradient(to top, #121212 65%, transparent);
 }
 
 .user-info-content {
-	position: absolute;
+	align-items: center;
 	bottom: 0;
-	z-index: 2;
-	width: 100%;
-	height: 330px;
 	display: flex;
 	flex-direction: column;
+	height: 330px;
 	justify-content: space-evenly;
-	align-items: center;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
 }
 
 .user-info-content p {
-	width: 260px;
 	color: #737377;
 	font-size: 13px;
+	width: 260px;
 }
 
 .user-info-content p a {
-	text-decoration: none;
 	color: #fff;
+	text-decoration: none;
 }
 
 .Form {
-	padding: 10px;
 	align-items: center;
 	box-sizing: border-box;
+	padding: 10px;
 }
 
 .Form h1 {
@@ -152,26 +152,26 @@ button {
 }
 
 .Form form {
-	width: 260px;
 	height: 200px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	width: 260px;
 }
 
 .Form input,
 button {
 	border: none;
+	border-radius: 2px;
 	height: 40px;
 	outline: none;
-	border-radius: 2px;
 }
 
 .Form input {
-	width: 240px;
-	margin: 5px 0;
 	background: #333333;
+	margin: 5px 0;
 	padding: 0 10px;
+	width: 240px;
 }
 
 .Form input,
@@ -195,31 +195,31 @@ input:focus {
 
 /* Editor */
 .Editor {
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(5px);
 	border-radius: 20px;
 	color: black;
 	padding: 20px;
-	background-color: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(5px);
 }
 
 /* Toolbar */
 .Editor button {
 	align-items: center;
+	background: #363636;
+	border-radius: 10px;
+	color: #fff;
 	display: flexbox;
 	justify-content: space-between;
-	background: #363636;
-	color: #fff;
 	padding: 10px;
 	margin: 10px;
-	border-radius: 10px;
 }
 
 .card-container {
-	align-items: auto;
 	align-content: space-between;
+	align-items: auto;
 	display: flex;
-	flex-wrap: wrap;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
 
@@ -239,8 +239,8 @@ input:focus {
 }
 
 .card-container .ListCard .ViewList a {
-	text-decoration: none;
 	background-color: #085de5;
 	border-radius: 30px;
 	padding: 8px;
+	text-decoration: none;
 }

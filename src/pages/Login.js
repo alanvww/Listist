@@ -16,7 +16,6 @@ function Login({ setErrors, setLoggedIn, setUserInformation }) {
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user;
-					console.log(user);
 					setLoggedIn(true);
 					setUserInformation({
 						email: user.email,

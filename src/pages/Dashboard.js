@@ -2,16 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ListCard from '../components/ListCard';
 
-export const MOCK_DATA = [
-	{
-		strContent: 'Enter Title Here\n\nFirst Item\n\nSecond Item\n\nThird Item',
-		userID: 'dfsdfj',
-		userName: 'Lan',
-		postID: 'dfsd',
-	},
-];
-
-const url = `http://localhost:4000`;
+const url = process.env.REACT_APP_BACKEND_URL || `http://localhost:4000`;
 
 function Dashbroad() {
 	const [lists, setLists] = useState([]);

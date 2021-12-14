@@ -65,7 +65,11 @@ function App() {
 	return (
 		<>
 			{/* <> is <React.Fragment> */}
-			<Header logout={logout} loggedIn={loggedIn} />
+			<Header
+				logout={logout}
+				loggedIn={loggedIn}
+				userInformation={userInformation}
+			/>
 			{errors && <p className="Error PageWrapper">{errors}</p>}
 			<Router>
 				<Routes>
@@ -114,7 +118,13 @@ function App() {
 					/>
 					<Route
 						path="/add-post"
-						element={loggedIn ? <AddPost /> : <Navigate to="/login" />}
+						element={
+							loggedIn ? (
+								<AddPost userInformation={userInformation} />
+							) : (
+								<Navigate to="/login" />
+							)
+						}
 					/>
 					<Route
 						path="/lists/:id"

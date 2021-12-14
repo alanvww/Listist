@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header({ logout, loggedIn }) {
+function Header({ logout, loggedIn, userInformation }) {
 	return (
 		<header className="Header">
 			<div className="Logo">Listist</div>
@@ -15,7 +15,7 @@ function Header({ logout, loggedIn }) {
 					<>
 						<a href="/">Dashboard</a>
 						<a href="/add-post">Add Post</a>
-						<a href="/user/:id">My Profile</a>
+						<a href={`/user/${userInformation.uid}`}>My Profile</a>
 						<button onClick={() => logout()}>Log Out</button>
 					</>
 				)}

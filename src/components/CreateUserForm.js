@@ -9,7 +9,7 @@ function CreateUserForm({ signUpUser }) {
 					<h1>Hi, new friend.</h1>
 					<form onSubmit={(e) => signUpUser(e)}>
 						<div>
-							<input type="displayName" name="displayName" placeholder="Name" />
+							<input type="text" name="displayName" placeholder="Name" />
 
 							<input type="email" name="email" placeholder="Email" />
 
