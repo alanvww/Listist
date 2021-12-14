@@ -1,6 +1,10 @@
 import React from 'react';
 import { useCallback } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	updateProfile,
+} from 'firebase/auth';
 import CreateUserForm from '../components/CreateUserForm';
 
 function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
@@ -13,11 +17,13 @@ function CreateUser({ setErrors, setLoggedIn, setUserInformation }) {
 			const displayName = e.currentTarget.displayName.value;
 
 			const auth = getAuth();
-			createUserWithEmailAndPassword(auth, email, password, displayName)
-				.then((userCredential) => {
+
+			createUserWithEmailAndPassword(auth, email, password)
+				.then(async (userCredential) => {
 					// Signed in
 					const user = userCredential.user;
-					console.log(user);
+					await updateProfile(auth.currentUser, { displayName });
+
 					setLoggedIn(true);
 					setUserInformation({
 						email: user.email,
